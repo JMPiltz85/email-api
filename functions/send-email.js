@@ -47,7 +47,7 @@ const transporter = nodemailer.createTransport({
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent', id: info.messageId }),
+      body: JSON.stringify({ success:true, message: 'Email sent', id: info.messageId }),
     };
   } 
   
@@ -55,7 +55,7 @@ const transporter = nodemailer.createTransport({
     console.error('Error sending email:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' }),
+      body: JSON.stringify({ success:false, error: 'Failed to send email' }),
     };
   }
 };
