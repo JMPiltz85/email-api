@@ -11,10 +11,19 @@ exports.handler = async function (event, context) {
     ];
 
     const headers = {
-        'Access-Control-Allow-Origin': allowedOrigins, 
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Origin': '', 
     };
+
+    const origin = event.headers.origin;
+
+
+    if(allowedOrigins.includes(origin)){
+        headers['Access-Control-Allow-Origin'] = origin;
+    }
+
+    
 
     // Handle preflight requests (OPTIONS)
     if (event.httpMethod === 'OPTIONS') {
