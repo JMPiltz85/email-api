@@ -8,7 +8,7 @@ exports.handler = async function (event, context) {
     //      Will need to update once hosting website properly
     const allowedOrigins = [
         'http://localhost:3000',
-        'https://fb1e278d.lakeshore-website.pages.dev/'
+        'https://fb1e278d.lakeshore-website.pages.dev'
     ];
 
     const headers = {
