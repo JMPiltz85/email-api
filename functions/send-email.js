@@ -8,7 +8,7 @@ exports.handler = async function (event, context) {
     //      Will need to update once hosting website properly. Also, cannot end with "/"
     const allowedOrigins = [
         'http://localhost:3000',
-        'https://fb1e278d.lakeshore-website.pages.dev'
+        'https://lakeshore-website.pages.dev'
     ];
 
     const headers = {
@@ -38,31 +38,39 @@ exports.handler = async function (event, context) {
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
-            body: JSON.stringify({ error: 'Method Not Allowed' }),
+            headers,
+            body: JSON.stringify({ error: 'Method Not Allowed.' }),
         };
     }
 
     const { to, subject, text } = JSON.parse(event.body || '{}');
 
     if (!to) {
-        return res.status(400).json({ 
+
+        return{
+            statusCode: 400,
             headers,
-            error: 'Missing To field' 
-        });
+            body: JSON.stringify({ error: 'Missing To field' }),
+        };
+
     }
 
     if (!subject) {
-        return res.status(400).json({ 
+
+        return{
+            statusCode: 400,
             headers,
-            error: 'Missing Subject field' 
-        });
+            body: JSON.stringify({ error: 'Missing Subject field' }),
+        };
     }
 
     if (!text) {
-        return res.status(400).json({ 
+
+        return{
+            statusCode: 400,
             headers,
-            error: 'Missing Text field' 
-        });
+            body: JSON.stringify({ error: 'Missing Text field' }),
+        };
     }
   
 
