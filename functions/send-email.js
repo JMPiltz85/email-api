@@ -7,7 +7,8 @@ exports.handler = async function (event, context) {
     //NOTE: Specifies Which URLs to allow cross-origin requests from. 
     //      Will need to update once hosting website properly
     const allowedOrigins = [
-        'http://localhost:3000'
+        'http://localhost:3000',
+        'https://fb1e278d.lakeshore-website.pages.dev/'
     ];
 
     const headers = {
